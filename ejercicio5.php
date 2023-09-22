@@ -99,7 +99,7 @@
                     return "nueve";
             }
 
-            echo $numEnTexto;
+            echo "numero en texto es " . $numEnTexto;
         }
     ?>
 </body>
