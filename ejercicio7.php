@@ -8,32 +8,32 @@
 <body>
     <?php
         //declaracion del array
-        $listaNumeros = array(0);
+        $listaNumeros = [];
 
         //poner cinco elementos
         for ($i = 0; $i < 5; $i++) {
-            $repetido = true;
-            $listaNumeros[$i] = rand (1,10);
+            
+            while(true) {
+                $numToAdd = rand (1,10);
 
-            while($repetido == true) {
-
-                $repetido = false;
-                
-                for ($j = 0; $j < $i; $j ++) {
-                    
-                    if ($listaNumeros[$j] == $listaNumeros[$i]) {
-                        $repetido = true;
-                    }
-                }
-
-                if ($repetido == true) {
-                    $listaNumeros[$i] = rand(1,10);
+                if (in_array($numToAdd,$listaNumeros) == false) {
+                    array_push($listaNumeros,$numToAdd);
+                    break;
                 }
             }
         }
 
+        //pintar las tablas de multiplicar de cada numero
+        foreach ($listaNumeros as $numero) {
+            for ($i = 1 ; $i < 11 ; $i++) {
+                echo $numero . " x " . $i . " = " . ($numero * $i) . "<br>"; 
+            }
+
+            echo "<br>";
+        }
+
         //pintar array
-        print_r($listaNumeros);
+        //print_r($listaNumeros);
 
     ?>
 </body>
