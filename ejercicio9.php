@@ -14,29 +14,33 @@
 
         //elegir colores y meterlos en array colores
         for($i = 0; $i < 5; $i++) {
-            $oneColor = [];
+            
+            while(true) {
 
-            for($j = 0; $j <3; $j++ ) {
-                array_push($oneColor, rand(0,255));
+                $oneColor = [];
+
+                for($j = 0; $j <3; $j++ ) {
+                    array_push($oneColor, rand(0,255));
+                }
+
+                if(in_array($oneColor,$colores) == false) {
+                    array_push($colores,$oneColor);
+                    break;
+                }
+
             }
-
-            array_push($colores,$oneColor);
-
         }
 
-        print_r($colores);
+        //var_dump($colores);
 
-        echo '
-        <svg height="100" width="100" >
-            <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
-        </svg>
-        ';
-
-        echo '
-        <svg height="100" width="100">
-            <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
-        </svg>
-        ';
+        //crear circulos con el color
+        foreach($colores as $color) {
+            echo '
+            <svg height="100" width="100" >
+                <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="rgb('. $color[0]. ','. $color[1] . ','. $color[2] .')" />
+            </svg>
+            ';
+        }
 
     ?>
 
